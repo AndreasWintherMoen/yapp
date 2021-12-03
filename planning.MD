@@ -28,6 +28,10 @@ Rust is a language I've wanted to try out but never had the time for. I'm not ve
 
 This is another one of those langauges trying to make everything look simple, kinda like a new Python. Doesn't really do much you can't do in Python, except use camel case. Its popularity is growing, probably mostly because of Flutter, but I don't really think it's going to be that common in the future. The type system seems nice. Pointer arithmetic seems to be non-existent. Not really feeling this one either.
 
+-----
+
+## Conclusion
+
 Ok, so I don't really want something too low level, because efficiency is irrelevant and eventually I want to use my own language to compile. The two most important things are #1 development time and #2 learning outcome and usefulness. For #1 I guess C# would be preferred because I already have experience with it and it's very well documented. Once I grasp the basics I guess both Go and Dart would be pretty quick as well. For #2 I'm thinking Go is preferred, followed by C# and maybe Dart.
 
 Let's exclude C++ and Rust because too low level and unnecessarily tedious and complex. That leaves C#, Go and Dart. The least commonly used is Dart, and I feel like this is probably the least likely to be useful for me in the future. And it seems a bit too high level for this project. I guess we're down to Go vs C#. It's quite late so I'll ponder about this until tomorrow, but I think I'll go with C# assuming that there's no issues doing it on a Mac. Yeah, I think so. The only major strength of Go is goroutines which I won't be using at all for this project. As of day 1, C# is the primary contender.
