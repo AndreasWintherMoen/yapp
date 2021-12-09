@@ -48,11 +48,6 @@ namespace Yapp
             this.Lexeme = lexeme;
         }
 
-        public override string ToString()
-        {
-            return $"Token {this.Type.ToString()} (index { this.Index.ToString()}): {this.Lexeme}";
-        }
-
         private TokenType LexemeToTokenType(string lexeme)
         {
             if (int.TryParse(lexeme, out _))
@@ -88,7 +83,7 @@ namespace Yapp
 
         public override string ToString()
         {
-            return $"SyntaxTree: {this.Root}";
+            return this.Root.ToString("", true);
         }
     }
 
@@ -97,6 +92,20 @@ namespace Yapp
         public Token Token { get; protected set; }
 
         public virtual IEnumerable<TreeNode> GetChildren() => ImmutableList<TreeNode>.Empty;
+
+        public string ToString(string indent, bool isLast)
+        {
+            var newIndent = indent + (isLast ? "    " : "│   ");
+            var lastChild = this.GetChildren().LastOrDefault();
+            
+            var output = $@"{indent}{(isLast ? "└──" : "├──")}{this.Token.Type} {this.Token.Lexeme}
+";
+
+            foreach (var child in this.GetChildren())            
+                output += child.ToString( newIndent, child == lastChild);
+            
+            return output;
+        }
     }
 
     abstract class Expression : TreeNode
@@ -120,11 +129,6 @@ namespace Yapp
             yield return this.Left;
             yield return this.Right;
         }
-
-        public override string ToString()
-        {
-            return $"Binary expression: {this.Left} {this.Token} {this.Right}";
-        }
     }
 
     class PrimaryExpression : Expression
@@ -132,11 +136,6 @@ namespace Yapp
         public PrimaryExpression(Token token)
         {
             this.Token = token;
-        }
-
-        public override string ToString()
-        {
-            return $"Primary expression: {this.Token}";
         }
     }
 
@@ -157,11 +156,6 @@ namespace Yapp
         {
             this.tokens = Tokenize(line);
 
-            foreach (var token in tokens)
-            {
-                Console.WriteLine(token);
-            }
-            
             var expression = ParseTerm();
 
             return new SyntaxTree(expression);
