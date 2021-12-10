@@ -28,7 +28,7 @@ An advantage with the postfix notation is that we don't have to care about prese
 1   2
 ```
 
-However, the statement **1 + 2 \* 3** must give the following:
+But the statement **1 + 2 \* 3** must give the following:
 
 ```
   +
@@ -51,4 +51,12 @@ while b != 0:
 return a
 ```
 
-![Abstract Syntax Tree example](https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg)
+[![Abstract Syntax Tree Example](https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg)](https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg)
+
+## Expression Types
+
+To build an AST, tokens must be separated into different expression types. Some tokens are primary expressions. These have only one value, such as **2** or **"Hello world"**. A paranthesized expression can also be considered a primary expression, as it can be considered a standalone expression seen from outside the parantheses, so **(2 + 3)** would be a primary expression.
+
+Other expressions are binary. These have a left side and a right side. **+** and **/** are examples of binary expressions. Each side is another expression, but do not necessarily have to be primary expressions.
+
+I don't think ASTs necessarily have to be binary trees, which means we can have n-ary expressions. Function parameters are something I think may lead to more than 2 child nodes. However, this will do for now.
