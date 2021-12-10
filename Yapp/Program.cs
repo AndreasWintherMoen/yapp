@@ -20,6 +20,43 @@ namespace Yapp
                 var syntaxTree = parser.Parse(line);
                 
                 Console.WriteLine(syntaxTree);
+
+                var value = Calculate(syntaxTree);
+
+                Console.WriteLine(value);
+            }
+        }
+
+        static int Calculate(SyntaxTree input)
+        {
+            return EvaluateExpression((Expression)input.Root);
+        }
+
+        static int EvaluateExpression(Expression expression)
+        {
+            // obviously needs more error handling
+
+            if (expression.Token.Type == TokenType.NUMBER)
+            {
+                return int.Parse(expression.Token.Lexeme);
+            }
+
+            var binaryExpression = (BinaryExpression) expression;
+            var left = EvaluateExpression(binaryExpression.Left);
+            var right = EvaluateExpression(binaryExpression.Right);
+
+            switch (binaryExpression.Token.Type)
+            {
+                case TokenType.PLUS:
+                    return left + right;
+                case TokenType.MINUS:
+                    return left - right;
+                case TokenType.MULTIPLY:
+                    return left * right;
+                case TokenType.DIVIDE:
+                    return left / right;
+                default:
+                    throw new Exception("Could not find token type " + binaryExpression.Token.Type);
             }
         }
     }
