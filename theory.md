@@ -51,7 +51,7 @@ while b != 0:
 return a
 ```
 
-[![Abstract Syntax Tree Example](https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg)](https://en.wikipedia.org/wiki/Abstract_syntax_tree#/media/File:Abstract_syntax_tree_for_Euclidean_algorithm.svg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Abstract_syntax_tree_for_Euclidean_algorithm.svg/1920px-Abstract_syntax_tree_for_Euclidean_algorithm.svg.png" height="400px"/>
 
 ## Expression Types
 
